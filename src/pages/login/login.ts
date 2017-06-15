@@ -9,7 +9,7 @@ import { ForgotPasswordPage } from '../forgot-password/forgot-password';
 import { HomePage } from '../home/home';
 
 //provider 
-import { AuthService } from '../../providers/auth-service/auth-service';
+import { AuthServiceProvider} from '../../providers/auth-service/auth-service';
 /**
  * Generated class for the LoginPage page.
  *
@@ -30,7 +30,7 @@ export class LoginPage {
     public menuCtrl: MenuController, 
     public navCtrl: NavController, 
     public navParams: NavParams,
-    public auth: AuthService) {
+    public auth: AuthServiceProvider) {
   }
 
   //ionViewDidLoad() {

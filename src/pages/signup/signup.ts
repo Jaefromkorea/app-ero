@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 
+//apppages
+
+import { HomePage } from '../home/home';
+
+import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 /**
  * Generated class for the SignupPage page.
  *
@@ -14,11 +19,57 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class SignupPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  signup: {fullname?: string, email?: string, password?: string} = {};
+  submitted = false;
+  alertMessage: any;
+
+  constructor(public nav: NavController, 
+  public navParams: NavParams, 
+  public auth: AuthServiceProvider,
+  public alertController: AlertController ) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SignupPage');
+  onSignup(form) {
+    this.submitted = true;
+    if (form.valid) {      
+      this.auth.LoadingControllerShow();
+      this.auth.signUpWithEmail(this.signup).then(() => {
+          this.SignupSuccess();
+        }).catch(
+        (error) => {
+          this.auth.LoadingControllerDismiss();
+          this.SignUpError(error);
+        }
+      );
+    }
   }
 
+  SignupSuccess() {
+    setTimeout(() => {
+        this.nav.setRoot(HomePage, {}, {animate: true, direction: 'forward'});
+      }, 1000);    
+  }
+  
+  SignUpError(error): void {
+    switch (error.code) {
+      case "auth/email-already-in-use":
+          this.alertMessage = "The specified email is already in use!"
+          break;
+      case "auth/invalid-email":
+          this.alertMessage = "The specified email is not valid!"
+          break;
+      case "auth/operation-not-allowed":
+          this.alertMessage = "Your account has been disabled. Please contact support!"
+          break;
+      case "auth/weak-password":
+          this.alertMessage = "Password should be at least 6 characters!"
+          break;
+    }
+    let alert = this.alertController.create({
+      title: 'Sign Up Failed',
+      subTitle: this.alertMessage,
+      buttons: ['Ok']
+    });
+    alert.present();
+  }
 }

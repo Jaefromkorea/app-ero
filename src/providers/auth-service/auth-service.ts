@@ -7,7 +7,7 @@ import { LoadingController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 
 
-import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
+import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 
 import * as firebase from 'firebase';
@@ -25,7 +25,7 @@ export class AuthServiceProvider {
   private loading: any;
   private userauth;
   
-
+  public user;
 
 
 
@@ -39,9 +39,7 @@ export class AuthServiceProvider {
       this.authState = afAuth.authState;
 
     this.userdata = firebase.database().ref('/users/');
-    this.housedata = firebase.database().ref('/houses/');
-    this.profilepicdata = firebase.storage().ref().child('/profilepics/');
-    this.housepicdata = firebase.storage().ref().child('/housepics/');
+    
     
     console.log('Hello AuthServiceProvider Provider');
   }
@@ -69,11 +67,60 @@ signInWithEmail(credentials): firebase.Promise<any> {
     });
   }
 
+signUpWithEmail(credentials): firebase.Promise<any> {
+    return new Promise((resolve: () => void, reject: (reason: Error) => void) => {
+      this.afAuth.auth.createUserWithEmailAndPassword(credentials.email, credentials.password)
+      .then((authData) => {
+        this.userauth = authData;
+        this.user = credentials;
+        this.createInitialSetup();
+        resolve();
+      }).catch((error) => {
+        reject(error);
+      });
+    });
+  }  
 
 LoadingControllerDismiss() {
     this.loading.dismiss();
 }
+//personal profile
+getUserData() { 
+    const thisuser$ : FirebaseObjectObservable<any> = this.db.object('/users/' + this.userauth.uid); 
+    thisuser$.subscribe((val) => {
+      this.user = val;
+    });
+  }
+// sign in -Creat user
+createInitialSetup() {
+    this.createUserProfile();
+  
+  }
+createUserProfile() {
 
+   // Set basic user profile defaults
+    var profile = {
+      datecreated: firebase.database['ServerValue']['TIMESTAMP'],
+
+      defaultdate: 'None',
+      email: this.user.email,
+      fullname: this.user.fullname,
+      nickname: this.user.fullname,
+      profilepic: 'http://www.gravatar.com/avatar?d=mm&s=140',
+    };
+    this.user.defaultdate = profile.defaultdate;
+
+    
+    // Save user profile
+    this.userdata.child(this.userauth.uid).update(profile);
+  }
+
+  signOut(): void {
+    this.authState = null;
+    this.user = null;
+    this.userauth = null;
+    this.userdata = null;
+  }
 
 
 }
