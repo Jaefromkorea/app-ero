@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 
 //apppages
 
-import { HomePage } from '../home/home';
+import { BeerPage } from '../beer/beer';
 
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 /**
@@ -26,7 +26,7 @@ export class SignupPage {
   constructor(public nav: NavController, 
   public navParams: NavParams, 
   public auth: AuthServiceProvider,
-  public alertController: AlertController ) {
+  public alertController: AlertController) {
   }
 
   onSignup(form) {
@@ -35,9 +35,10 @@ export class SignupPage {
       this.auth.LoadingControllerShow();
       this.auth.signUpWithEmail(this.signup).then(() => {
           this.SignupSuccess();
+             this.auth.LoadingControllerDismiss();
         }).catch(
         (error) => {
-          this.auth.LoadingControllerDismiss();
+       this.auth.LoadingControllerDismiss();
           this.SignUpError(error);
         }
       );
@@ -46,7 +47,7 @@ export class SignupPage {
 
   SignupSuccess() {
     setTimeout(() => {
-        this.nav.setRoot(HomePage, {}, {animate: true, direction: 'forward'});
+        this.nav.setRoot(BeerPage, {}, {animate: true, direction: 'forward'});
       }, 1000);    
   }
   

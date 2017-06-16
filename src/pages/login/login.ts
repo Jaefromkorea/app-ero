@@ -6,7 +6,7 @@ import { AlertController, MenuController} from 'ionic-angular';
 //app pages
 import { SignupPage } from '../signup/signup';
 import { ForgotPasswordPage } from '../forgot-password/forgot-password';
-import { HomePage } from '../home/home';
+import { BeerPage } from '../beer/beer';
 
 //provider 
 import { AuthServiceProvider} from '../../providers/auth-service/auth-service';
@@ -45,6 +45,7 @@ onLogin(form) {
       this.auth.signInWithEmail(this.login)
       .then(() => {
           this.LoginSuccess();
+           this.auth.LoadingControllerDismiss();
         }
       )
       .catch(
@@ -57,7 +58,7 @@ onLogin(form) {
   }
 LoginSuccess() {
     setTimeout(() => {
-      this.navCtrl.setRoot(HomePage, {}, {animate: true, direction: 'forward'});
+      this.navCtrl.setRoot(BeerPage, {}, {animate: true, direction: 'forward'});
     }, 1000);
   }
 

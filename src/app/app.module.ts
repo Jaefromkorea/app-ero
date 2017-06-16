@@ -31,12 +31,12 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 
 
 export const firebaseConfig = {
-  apiKey: "AIzaSyAjiJc9cXvd3bzl-aW0wbQC6sajr6RH5hg",
-  authDomain: "brilliant-inferno-1044.firebaseapp.com",
-  databaseURL: "https://brilliant-inferno-1044.firebaseio.com",
-  projectId: "brilliant-inferno-1044",
-  storageBucket: "brilliant-inferno-1044.appspot.com",
-  messagingSenderId: "1097950001655"
+    apiKey: "AIzaSyD_WfcPALlykZOs20kEJzMMYXZTtlMoMu8",
+    authDomain: "appero-6edac.firebaseapp.com",
+    databaseURL: "https://appero-6edac.firebaseio.com",
+    projectId: "appero-6edac",
+    storageBucket: "appero-6edac.appspot.com",
+    messagingSenderId: "875629347408"
 };
 
 

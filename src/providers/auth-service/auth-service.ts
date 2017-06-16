@@ -7,7 +7,7 @@ import { LoadingController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 
 
-import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database';
+import { AngularFireDatabase, FirebaseObjectObservable, FirebaseListObservable } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 
 import * as firebase from 'firebase';
@@ -43,7 +43,10 @@ export class AuthServiceProvider {
     
     console.log('Hello AuthServiceProvider Provider');
   }
-
+  
+ get authenticated(): boolean {
+    return this.authState !== null;
+  }
 
 LoadingControllerShow() {
     this.loading = this.loadingCtrl.create({
@@ -52,6 +55,9 @@ LoadingControllerShow() {
     });
     this.loading.present();
   }
+  LoadingControllerDismiss() {
+    this.loading.dismiss();
+}
 
 
 signInWithEmail(credentials): firebase.Promise<any> {
@@ -81,9 +87,7 @@ signUpWithEmail(credentials): firebase.Promise<any> {
     });
   }  
 
-LoadingControllerDismiss() {
-    this.loading.dismiss();
-}
+
 //personal profile
 getUserData() { 
     const thisuser$ : FirebaseObjectObservable<any> = this.db.object('/users/' + this.userauth.uid); 

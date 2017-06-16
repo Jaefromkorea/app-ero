@@ -46,7 +46,8 @@ export class MyApp {
       { title: 'Food', component: FoodPage, icon: 'ios-attach-outline', color: '', showloader: true  }, 
     ];
     this.logoutpages = [
-      { title: 'Logout', component: LogoutPage, icon: 'md-log-out', color: '#f53d3d', }
+      { title: 'Logout', component: LogoutPage, icon: 'md-log-out', color: '#f53d3d', },
+      { title: 'Orderlist', component: LogoutPage, icon: 'md-log-out', color: '#f53d3d', }
     ];
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
