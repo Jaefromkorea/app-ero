@@ -11,11 +11,24 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { BeerPage } from '../pages/beer/beer';
 import { FoodPage } from '../pages/food/food';
-import { CocktailPage } from '../pages/cocktail/cocktail';
+
 import { ForgotPasswordPage } from '../pages/forgot-password/forgot-password';
 import { LoginPage } from '../pages/login/login';
 import { LogoutPage } from '../pages/logout/logout';
 import { SignupPage } from '../pages/signup/signup';
+
+//meridien
+import { AperitifPage } from '../pages/meridien/aperitif/aperitif';
+import { CocktailPage } from '../pages/meridien/cocktail/cocktail';
+import { DessertPage } from '../pages/meridien/dessert/dessert';
+import { DigestifPage } from '../pages/meridien/digestif/digestif';
+import { DishePage } from '../pages/meridien/dishe/dishe';
+import { PartagerPage } from '../pages/meridien/partager/partager';
+import { SoftdrinkPage } from '../pages/meridien/softdrink/softdrink';
+import { VinPage } from '../pages/meridien/vin/vin';
+
+
+
 
 
 //provider
@@ -51,7 +64,16 @@ export const firebaseConfig = {
     ForgotPasswordPage,
     LoginPage,
     LogoutPage,
-    SignupPage
+    SignupPage,
+    AperitifPage,
+    //meridien
+    CocktailPage,
+    DessertPage,
+    DigestifPage,
+    DishePage,
+    PartagerPage,
+    SoftdrinkPage,
+    VinPage
   ],
   imports: [
     BrowserModule,
@@ -74,7 +96,16 @@ export const firebaseConfig = {
     ForgotPasswordPage,
     LoginPage,
     LogoutPage,
-    SignupPage
+    SignupPage,
+    //meridien
+    AperitifPage,
+    CocktailPage,
+    DessertPage,
+    DigestifPage,
+    DishePage,
+    PartagerPage,
+    SoftdrinkPage,
+    VinPage
   ],
   providers: [
     StatusBar,

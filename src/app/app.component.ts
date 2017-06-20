@@ -14,9 +14,21 @@ import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 import { LoginPage } from '../pages/login/login';
 
 //menu
-import { BeerPage } from '../pages/beer/beer';
-import { FoodPage } from '../pages/food/food';
-import { CocktailPage } from '../pages/cocktail/cocktail';
+//import { BeerPage } from '../pages/beer/beer';
+//import { FoodPage } from '../pages/food/food';
+
+
+//menu for meridien
+import { AperitifPage } from '../pages/meridien/aperitif/aperitif';
+import { CocktailPage } from '../pages/meridien/cocktail/cocktail';
+import { DessertPage } from '../pages/meridien/dessert/dessert';
+import { DigestifPage } from '../pages/meridien/digestif/digestif';
+import { DishePage } from '../pages/meridien/dishe/dishe';
+import { PartagerPage } from '../pages/meridien/partager/partager';
+import { SoftdrinkPage } from '../pages/meridien/softdrink/softdrink';
+import { VinPage } from '../pages/meridien/vin/vin';
+
+
 import { LogoutPage } from '../pages/logout/logout';
 @Component({
   templateUrl: 'app.html'
@@ -41,9 +53,15 @@ export class MyApp {
 
          // app menu
       this.pages = [
-      { title: 'Beer', component: BeerPage, icon: 'ios-browsers-outline', color: '', showloader: false },
-      { title: 'Cocktail', component: CocktailPage, icon: 'ios-color-wand-outline', color: '', showloader: false  },
-      { title: 'Food', component: FoodPage, icon: 'ios-attach-outline', color: '', showloader: true  }, 
+      { title: 'To share', component: PartagerPage, icon: 'ios-browsers-outline', color: '', showloader: false },
+      { title: 'Dishes', component: DishePage, icon: 'ios-color-wand-outline', color: '', showloader: false  },
+      { title: 'Desserts', component: DessertPage, icon: 'ios-attach-outline', color: '', showloader: true  }, 
+      { title: 'Aperitifs', component: AperitifPage, icon: 'ios-attach-outline', color: '', showloader: true  }, 
+      { title: 'Vins & Champagnes', component: VinPage, icon: 'ios-attach-outline', color: '', showloader: true  }, 
+      { title: 'Cocktails', component: CocktailPage, icon: 'ios-attach-outline', color: '', showloader: true  }, 
+      { title: 'Digestifs', component: DigestifPage, icon: 'ios-attach-outline', color: '', showloader: true  }, 
+      { title: 'Soft drinks', component: SoftdrinkPage, icon: 'ios-attach-outline', color: '', showloader: true  }, 
+
     ];
     this.logoutpages = [
       { title: 'Logout', component: LogoutPage, icon: 'md-log-out', color: '#f53d3d', },
