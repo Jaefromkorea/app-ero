@@ -24,16 +24,14 @@
         <ion-item-divider sticky>
         {{ drinkType.type }}
         </ion-item-divider>
-        
-      <ion-item template ngFor let-drink [ngForOf]="drinkType.list" let-j="index">
-        <button ion-itam (click)= "a()"> 
       <ion-row>
+        <ng-template ngFor let-drink [ngForOf]="drinkType.list" let-j="index">
           <ion-col width-80>
             <div class="customAccDesc">
               <span>
                 <strong> {{ drink.name }}</strong>
                   <small>
-                    {{ drink.explanation }}   
+                    {{ drink.explanation }}
                   </small>
                 </span>
               </div>
@@ -49,10 +47,8 @@
             </div>
           </ion-col>
           
-        
+        </ng-template>
       </ion-row>
-      </button>
-      </ion-item>
       </ion-item-group>
 
     </ion-list>
