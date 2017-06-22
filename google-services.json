@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "875629347408",
+    "firebase_url": "https://appero-6edac.firebaseio.com",
+    "project_id": "appero-6edac",
+    "storage_bucket": "appero-6edac.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:875629347408:android:764d2cb7da3280eb",
+        "android_client_info": {
+          "package_name": "io.ionic.starter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "875629347408-gp0qomlju0esjvlpsf7p5bqf2ehn2068.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACbBDwBC6VTjcgVWi6EnhGf5Nb3bFoAc4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
